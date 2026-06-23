@@ -41,10 +41,10 @@
 
 ## 运行环境
 
-推荐使用 `sora` conda 环境，该环境已安装支持 CUDA 的 PyTorch：
+本项目依赖 Python 3.10+。推荐通过 pip 安装依赖：
 
 ```bash
-conda activate sora
+pip install -r requirements.txt
 ```
 
 `src/config.py` 会自动检测 GPU（`cuda`），若无 GPU 则回退到 CPU。
