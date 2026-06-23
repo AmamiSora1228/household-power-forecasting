@@ -3,7 +3,10 @@ Main entry point: run all models on short-term and long-term forecasting tasks.
 """
 import json
 import pickle
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
 
 import numpy as np
 import pandas as pd

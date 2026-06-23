@@ -16,22 +16,27 @@
 
 ## 数据说明
 
-原始电力数据来自法国 索镇（Sceaux） 的一户家庭，时间粒度为每分钟。Sceaux 位于上塞纳省（Hauts-de-Seine），该省在法国的省份编号系统中为 **92**，因此天气数据选用 `MENSQ_92_previous-1950-2024.csv.gz`，以保证气象变量与用电数据在空间上匹配。
+原始电力数据来自法国索镇（Sceaux）的一户家庭，时间粒度为每分钟。Sceaux 位于上塞纳省（Hauts-de-Seine），该省在法国的省份编号系统中为 **92**，因此天气数据选用 `MENSQ_92_previous-1950-2024.csv.gz`，以保证气象变量与用电数据在空间上匹配。
 
 ## 文件结构
 
 ```
-code/
-├── config.py            # 路径、超参数配置
-├── data_preprocess.py   # 数据预处理
-├── dataset.py           # PyTorch Dataset 与滚动预测工具
-├── models.py            # LSTM / Transformer / LagLinear 模型
-├── train.py             # 训练、验证、评估函数
-├── run_experiments.py   # 主实验脚本
-├── plot_results.py      # 绘图脚本
-├── generate_report.py   # 生成 Overleaf LaTeX 报告
+.
+├── README.md
 ├── requirements.txt
-└── README.md
+├── src/                    # 核心模块
+│   ├── config.py           # 路径、超参数配置
+│   ├── models.py           # LSTM / Transformer / LagLinear 模型
+│   ├── dataset.py          # PyTorch Dataset 与滚动预测工具
+│   └── train.py            # 训练、验证、评估函数
+├── scripts/                # 可执行脚本
+│   ├── data_preprocess.py  # 数据预处理
+│   ├── run_experiments.py  # 主实验脚本
+│   ├── plot_results.py     # 绘图脚本
+│   ├── generate_report.py  # 生成 Overleaf LaTeX 报告
+│   └── run_all.sh          # 一键复现全部实验
+└── experiments/            # 其他探索性脚本
+    └── quick_test.py
 ```
 
 ## 运行环境
@@ -40,18 +45,21 @@ code/
 
 ```bash
 conda activate sora
-cd /storage/lcm_lab/sora/lab/work/code
 ```
 
-`config.py` 会自动检测 GPU（`cuda`），若无 GPU 则回退到 CPU。
+`src/config.py` 会自动检测 GPU（`cuda`），若无 GPU 则回退到 CPU。
 
 ## 运行步骤
 
 ```bash
-python3 data_preprocess.py      # 生成 results/train.csv 与 results/test.csv
-python3 run_experiments.py      # 训练并评估三种模型（GPU 上约 1 分钟）
-python3 plot_results.py         # 生成结果图
-python3 generate_report.py      # 生成 overleaf/main.tex
+# 一键复现（推荐）
+bash scripts/run_all.sh
+
+# 或分步执行
+python3 scripts/data_preprocess.py      # 生成 results/train.csv 与 results/test.csv
+python3 scripts/run_experiments.py      # 训练并评估三种模型（GPU 上约 1 分钟）
+python3 scripts/plot_results.py         # 生成结果图
+python3 scripts/generate_report.py      # 生成 overleaf/main.tex
 ```
 
 ## 输出
@@ -61,18 +69,3 @@ python3 generate_report.py      # 生成 overleaf/main.tex
 - `results/results.json`, `results/results.pkl`：实验指标与预测结果。
 - `results/figures/`：对比图、预测曲线图、训练曲线图。
 - `overleaf/main.tex` 与 `overleaf/figures/`：Overleaf 报告源文件。
-
-## GitHub 提交说明
-
-课程要求提交代码 GitHub 链接。本项目的代码已上传至：
-
-\`\`\`
-https://github.com/AmamiSora1228/household-power-forecasting
-\`\`\`
-
-## 参考文献
-
-- UCI Machine Learning Repository: Individual household electric power consumption.
-- Hochreiter S, Schmidhuber J. Long short-term memory. Neural computation, 1997.
-- Vaswani A, et al. Attention is all you need. NeurIPS, 2017.
-- Zhou H, et al. Informer: Beyond efficient transformer for long sequence time-series forecasting. AAAI, 2021.

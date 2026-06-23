@@ -3,7 +3,10 @@ Generate Overleaf-ready LaTeX report from experimental results.
 """
 import json
 import shutil
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
 
 import pandas as pd
 

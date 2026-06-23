@@ -7,7 +7,11 @@ number is 92. Therefore we use the MENSQ_92 weather file to obtain monthly
 meteorological features that are spatially consistent with the household.
 """
 import gzip
+import sys
 import warnings
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
 
 import pandas as pd
 import numpy as np
