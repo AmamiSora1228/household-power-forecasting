@@ -33,7 +33,6 @@
 │   ├── data_preprocess.py  # 数据预处理
 │   ├── run_experiments.py  # 主实验脚本
 │   ├── plot_results.py     # 绘图脚本
-│   ├── generate_report.py  # 生成 Overleaf LaTeX 报告
 │   └── run_all.sh          # 一键复现全部实验
 └── experiments/            # 其他探索性脚本
     └── quick_test.py
@@ -59,7 +58,6 @@ bash scripts/run_all.sh
 python3 scripts/data_preprocess.py      # 生成 results/train.csv 与 results/test.csv
 python3 scripts/run_experiments.py      # 训练并评估三种模型（GPU 上约 1 分钟）
 python3 scripts/plot_results.py         # 生成结果图
-python3 scripts/generate_report.py      # 生成 overleaf/main.tex
 ```
 
 ## 输出
@@ -68,4 +66,4 @@ python3 scripts/generate_report.py      # 生成 overleaf/main.tex
 - `results/norm_params.json`：标准化参数。
 - `results/results.json`, `results/results.pkl`：实验指标与预测结果。
 - `results/figures/`：对比图、预测曲线图、训练曲线图。
-- `overleaf/main.tex` 与 `overleaf/figures/`：Overleaf 报告源文件。
+
