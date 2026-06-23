@@ -64,7 +64,11 @@ python3 generate_report.py      # 生成 overleaf/main.tex
 
 ## GitHub 提交说明
 
-课程要求提交代码 GitHub 链接。请将本 `code/` 目录（含 README.md、requirements.txt 与所有脚本）上传至个人 GitHub 仓库，并在实验报告中替换占位链接为实际仓库地址。
+课程要求提交代码 GitHub 链接。本项目的代码已上传至：
+
+\`\`\`
+https://github.com/AmamiSora1228/household-power-forecasting
+\`\`\`
 
 ## 参考文献
 
