@@ -56,7 +56,7 @@ bash scripts/run_all.sh
 
 # 或分步执行
 python3 scripts/data_preprocess.py      # 生成 results/train.csv 与 results/test.csv
-python3 scripts/run_experiments.py      # 训练并评估三种模型（GPU 上约 1 分钟）
+python3 scripts/run_experiments.py      # 训练并评估三种模型
 python3 scripts/plot_results.py         # 生成结果图
 ```
 
